@@ -1,10 +1,4 @@
-#no-button {
-  position: absolute;
-  transition: transform 0.35s ease-in-out;
-  will-change: transform;
-}
-
-
+/* -------------------- BASE STYLES -------------------- */
 body {
   margin: 0;
   min-height: 100vh;
@@ -12,18 +6,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: linear-gradient(
-    -45deg,
-    #ff9a9e,
-    #fad0c4,
-    #fbc2eb,
-    #a18cd1
-  );
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
   background-size: 400% 400%;
   animation: gradientBG 12s ease infinite;
 }
 
+/* Gradient animation */
 @keyframes gradientBG {
   0% {
     background-position: 0% 50%;
@@ -36,126 +24,127 @@ body {
   }
 }
 
+/* -------------------- CONTAINER -------------------- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* -------------------- BUTTONS -------------------- */
 .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    flex-direction: row;
-    align-items: end;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  align-items: flex-end;
+}
+
+#no-button,
+#yes-button {
+  margin: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: transform 0.2s;
 }
 
 #no-button {
-    margin: 0 10px;
-    color: white;
-    background-color: red;
-    height: 40px !important;
-    width: auto;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
+  background-color: red;
 }
 
 #yes-button {
-    margin: 0 10px;
-    color: white;
-    border: none;
-    background-color: green;
-    cursor: pointer;
-    height: 40px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
+  background-color: green;
 }
 
-/* Make responsive for mobile */
-@media (max-width: 768px) {
-    body {
-        padding: 0 20px;
-    }
+/* If there are <p> inside buttons */
+#no-button p,
+#yes-button p {
+  margin: 0;
+  object-fit: contain;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-
+/* -------------------- MESSAGE -------------------- */
 .message {
-    display: none;
+  display: none;
 }
 
+/* -------------------- BANNER -------------------- */
 .banner-gif {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-
-    img {
-        width: auto;
-        height: 250px;
-    }
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
 }
 
+.banner-gif img {
+  height: 250px;
+  max-width: 100%;
+}
+
+/* -------------------- LANGUAGE SELECTOR -------------------- */
 .language-selector {
-    margin-top: 30px;
-    position: unset;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  margin-top: 30px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .language-selector label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .language-selector select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
+/* -------------------- CREATOR LINK -------------------- */
 .creator {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;
+  color: #333;
 }
 
 .creator:visited {
-    text-decoration: none;
-    color: #333;
+  color: #333;
 }
 
 .creator:hover {
-    text-decoration: underline;
-    color: #555;
+  text-decoration: underline;
+  color: #555;
 }
 
-/* CSS For Mobile */
+/* -------------------- MEDIA QUERIES -------------------- */
 @media (max-width: 768px) {
-    .language-selector {
-        position: unset;
-        margin-top: 30px;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
+  body {
+    padding: 0 20px;
+  }
+
+  .language-selector {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .banner-gif img {
+    height: 200px;
+  }
+
+  #no-button,
+  #yes-button {
+    height: 35px;
+    font-size: 14px;
+    padding: 0 10px;
+  }
 }
