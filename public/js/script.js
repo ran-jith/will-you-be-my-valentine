@@ -65,35 +65,91 @@ let i = 1;
 let size = 50;
 let clicks = 0;
 
-no_button.addEventListener('click', () => {
-    // Change banner source
-    let banner = document.getElementById('banner');
-    if (clicks === 0) {
-        banner.src = "public/images/no.gif";
-        refreshBanner();
+document.addEventListener("DOMContentLoaded", () => {
+  const noBtn = document.getElementById("no-button");
+  const container = document.querySelector(".container");
+
+  let audioUnlocked = false;
+  const popSound = new Audio("./public/sounds/pop.mp3");
+
+  // Unlock audio on first user interaction (mobile rule)
+  document.body.addEventListener(
+    "touchstart",
+    () => {
+      if (!audioUnlocked) {
+        popSound.play().then(() => popSound.pause());
+        audioUnlocked = true;
+      }
+    },
+    { once: true }
+  );
+
+  function moveButton() {
+    const cRect = container.getBoundingClientRect();
+    const bRect = noBtn.getBoundingClientRect();
+
+    const maxX = cRect.width - bRect.width;
+    const maxY = cRect.height - bRect.height;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+    // play sound
+    if (audioUnlocked) {
+      popSound.currentTime = 0;
+      popSound.play();
     }
-    clicks++;
-    // increase button height and width gradually to 250px
-    const sizes = [40, 50, 30, 35, 45]
-    const random = Math.floor(Math.random() * sizes.length);
-    size += sizes[random]
-    yes_button.style.height = `${size}px`;
-    yes_button.style.width = `${size}px`;
-    let total = answers_no[language].length;
-    // change button text
-    if (i < total - 1) {
-        no_button.innerHTML = answers_no[language][i];
-        i++;
-    } else if (i === total - 1) {
-        alert(answers_no[language][i]);
-        i = 1;
-        no_button.innerHTML = answers_no[language][0];
-        yes_button.innerHTML = answers_yes[language];
-        yes_button.style.height = "50px";
-        yes_button.style.width = "50px";
-        size = 50;
-    }
+  }
+
+  // Mobile
+  noBtn.addEventListener("touchstart", moveButton);
+
+  // Desktop
+  noBtn.addEventListener("mouseenter", moveButton);
 });
+
+
+// no_button.addEventListener('click', () => {
+//     // Change banner source
+//     let banner = document.getElementById('banner');
+//     if (clicks === 0) {
+//         banner.src = "public/images/no.gif";
+//         refreshBanner();
+//     }
+//     clicks++;
+//     // increase button height and width gradually to 250px
+//     const sizes = [40, 50, 30, 35, 45]
+//     const random = Math.floor(Math.random() * sizes.length);
+//     size += sizes[random]
+//     yes_button.style.height = `${size}px`;
+//     yes_button.style.width = `${size}px`;
+//     let total = answers_no[language].length;
+//     // change button text
+//     if (i < total - 1) {
+//         no_button.innerHTML = answers_no[language][i];
+//         i++;
+//     } else if (i === total - 1) {
+//         alert(answers_no[language][i]);
+//         i = 1;
+//         no_button.innerHTML = answers_no[language][0];
+//         yes_button.innerHTML = answers_yes[language];
+//         yes_button.style.height = "50px";
+//         yes_button.style.width = "50px";
+//         size = 50;
+//     }
+// });
+
+let tries = 0;
+
+noBtn.addEventListener("touchstart", () => {
+  tries++;
+  if (tries === 5) {
+    noBtn.innerText = "Just say YES already 😜";
+  }
+});
+
 
 yes_button.addEventListener('click', () => {
     // change banner gif path
