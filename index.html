@@ -3,33 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Import Question</title>
+    <title>Will You Be My Valentine? 💖</title>
+
+    <!-- Main Styles -->
     <link rel="stylesheet" href="./public/css/style.css" />
+
+    <!-- Optional: Google Font (remove if already in CSS) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
     <div class="container">
+      <!-- Banner -->
       <div class="banner-gif">
-        <img id="banner" src="./public/images/mid.gif" alt="banner" />
+        <img id="banner" src="./public/images/mid.gif" alt="Valentine banner" />
       </div>
-      <h1 id="question-heading">Will you be my valentine?</h1>
+
+      <!-- Question -->
+      <h1 id="question-heading">
+        Will you be my Valentine, <span class="highlight">Achuuu</span>? 💕
+      </h1>
+
+      <!-- Buttons -->
       <div class="buttons">
-        <button id="yes-button"><p>Yes</p></button>
-        <button id="no-button"><p>No</p></button>
+        <button id="yes-button">💖 Yes 💖</button>
+        <button id="no-button">😜 No</button>
       </div>
+
+      <!-- Success Message -->
       <div class="message">
-        <h2 id="success-message">Yepppie, see you sooonnn :3</h2>
-        
-        <h6>Creator: <a class="creator" href="https://github.com/Aayush-683">Aayush683 ;)</a></h6>
+        <h2 id="success-message">
+          Yepppieee!! 🥰  
+          <br />
+          See you sooooonnn :3  
+          <br />
+          Ummaaah 💋
+        </h2>
+
+        <h6 class="creator-text">
+          Made with ❤️ by
+          <a
+            class="creator"
+            href="https://github.com/Aayush-683"
+            target="_blank"
+          >
+            Ranjith R ;)
+          </a>
+        </h6>
       </div>
+
+      <!-- Language Selector -->
       <div class="language-selector">
-        <label for="language-select">Choose Language:</label>
+        <label for="language-select">🌍 Choose Language:</label>
         <select id="language-select" onchange="changeLanguage()">
           <option value="english">English</option>
-          <option value="french">French</option>
+          <option value="french">Français</option>
           <option value="thai">แบบไทย</option>
         </select>
       </div>
     </div>
+
+    <!-- Script -->
     <script src="./public/js/script.js"></script>
   </body>
 </html>
