@@ -93,35 +93,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const cRect = container.getBoundingClientRect();
   const bRect = noBtn.getBoundingClientRect();
 
-  // Calculate max position within container
+  // Max translation values
   const maxX = cRect.width - bRect.width;
   const maxY = cRect.height - bRect.height;
 
-  // Random position but keep it inside container
+  // Random translate values
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
 
-  noBtn.style.position = "absolute"; // Ensure it can move freely
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
-
-  // Play sound if unlocked
-  if (audioUnlocked) {
-    popSound.currentTime = 0;
-    popSound.play();
-  }
-
-  // Change NO text
-  noIndex++;
-  if (noIndex >= answers_no[language].length) noIndex = 0;
-  noBtn.innerText = answers_no[language][noIndex];
-
-  // playful guilt after some tries
-  tries++;
-  if (tries === 5) {
-    noBtn.innerText = "Just say YES already 😜";
-  }
+  noBtn.style.transform = `translate(${x}px, ${y}px)`; // <-- keeps image intact
 }
+
 
 
   /* Events */
